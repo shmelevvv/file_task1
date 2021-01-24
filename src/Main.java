@@ -31,9 +31,13 @@ public class Main {
 
     private static boolean createDirectory(String directoryPath, StringBuilder log) {
         File directory = new File(directoryPath);
-        directory.mkdir();
-        log.append("Директория \"" + directoryPath + "\" успешно создана.\n");
-        return true;
+        boolean res = directory.mkdir();
+        if (res == true) {
+            log.append("Директория \"" + directoryPath + "\" успешно создана.\n");
+        } else {
+            log.append("Директория \"" + directoryPath + "\" не создана.\n");
+        }
+        return res;
     }
 
     private static boolean createFile(String directoryPath, String fileName, StringBuilder log) {
